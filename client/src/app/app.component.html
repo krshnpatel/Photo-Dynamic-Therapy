@@ -1,3 +1,12 @@
 <h1>
   {{title}}
 </h1>
+
+<ack-webcam
+[(ref)]   = "webcam"
+[options] = "options"
+(success) = "onCamSuccess($event)"
+(catch)   = "onCamError($event)"
+></ack-webcam>
+<button (click)="genBase64()"> generate base64 </button>
+<button (click)="genPostData()"> generate post data </button>

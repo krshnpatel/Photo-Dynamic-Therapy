@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.16.2",
+    "get-image-colors": "^1.8.1",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.4"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

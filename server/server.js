@@ -1,39 +1,32 @@
-const path = require('path')
-const getColors = require('get-image-colors')
+// const path = require('path')
+// const getColors = require('get-image-colors')
  
-getColors('./resources/two-red-pixels.jpg').then(colors => {
-  console.log(colors);
-})
-
-// var watson = require('watson-developer-cloud');
-// var fs = require('fs');
-
-// var visual_recognition = watson.visual_recognition({
-//   api_key: '8d7aced8efa9ce11cca985d203dce5989cc20148',
-//   version: 'v3',
-//   version_date: '2016-05-20'
-// });
-
-// var file_name = 'checkered-red.jpg';
-
-// var params = {
-//   images_file: fs.createReadStream('./resources/' + file_name)
-// };
-
-// visual_recognition.classify(params, function(err, res) {
-//   if (err)
-//     console.log(err);
-//   else
-//     console.log(JSON.stringify(res, null, 2));
-// });
-
-// var express = require('express')
-// var app = express()
-
-// app.get('/', function (req, res) {
-//   res.send('Hello World!')
+// getColors('./resources/two-red-pixels.jpg').then(colors => {
+//   console.log(colors);
 // })
 
-// app.listen(8000, function () {
-//   console.log('Example app listening on port 8000!')
-// })
+var mongoose   = require('mongoose');
+mongoose.connect('mongodb://main:main@ds113636.mlab.com:13636/photo-dynamic-therapy');
+
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+var patientRecordRoute = require('./routes/patient-record');
+var patientRoute = require('./routes/patient');
+
+app.use(function (request, response, next) {
+  response.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  response.header('Access-Control-Allow-Methods', 'POST, PATCH, GET, PUT, DELETE, OPTIONS');
+  next();
+});
+
+app.use('/patientRecord', patientRecordRoute);
+app.use('/patient', patientRoute);
+
+app.listen(8000, function () {
+  console.log('Example app listening on port 8000!');
+});
