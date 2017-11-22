@@ -11,6 +11,22 @@ router.route('/')
         });
     });
 
+router.route('/:_id')
+    .get((request, response) => {
+        patientRecord.findById(request.params._id, (error, onePatientRecord) => {
+            if (error)
+                response.send(error);
+            response.send(onePatientRecord);
+        });
+    })
+    .put((request, response) => {
+        patientRecord.findById(request.params._id, request.body, (error, onePatientRecord) => {
+            if (error)
+                response.send(error);
+            response.send(onePatientRecord);
+        });
+    });
+
 router.route('/add')
     .post((request, response) => {
         var newPatientRecord = new patientRecord(request.body);

@@ -1,12 +1,46 @@
-<h1>
-  {{title}}
-</h1>
-
-<ack-webcam
-[(ref)]   = "webcam"
-[options] = "options"
-(success) = "onCamSuccess($event)"
-(catch)   = "onCamError($event)"
-></ack-webcam>
-<button (click)="genBase64()"> generate base64 </button>
-<button (click)="genPostData()"> generate post data </button>
+<div class="row">
+  <div class="col s3">
+    <ul id="slide-out" class="side-nav fixed">
+      <li>
+        <div class="user-view">
+          <a href="#!user">
+            <img class="circle" src="../assets/images/default-profile-picture.png">
+          </a>
+          <a href="#!name">
+            <span class="name">Dr. John Doe</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li>
+        <a class="subheader">Menu</a>
+      </li>
+      <li>
+        <a routerLink="/crisis-center" routerLinkActive="active">
+          <i class="material-icons">dashboard</i>Dashboard</a>
+      </li>
+      <li>
+        <a href="#!">
+          <i class="material-icons">settings</i>Settings</a>
+      </li>
+      <li>
+        <a href="#!">
+          <i class="material-icons">power_settings_new</i>Logout</a>
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li>
+        <a class="subheader">Recently Viewed</a>
+      </li>
+      <li>
+        <a href="#!">Farhan Ahmed</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col s9">
+    <router-outlet></router-outlet>
+  </div>
+</div>

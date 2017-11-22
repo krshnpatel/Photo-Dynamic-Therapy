@@ -4,7 +4,14 @@ var patientRecordSchema = mongoose.Schema(
         melanin: Number,
         age: Number,
         sex: String,
-        optimalWavelength: Number
+        optimalWavelength: Number,
+        trialNo: {type: Number, default: 0},
+        trials: [{
+            trialNumber: Number,
+            redValue: Number,
+            redReduced: Number,
+            wavelength: Number
+        }]
     }
 );
 

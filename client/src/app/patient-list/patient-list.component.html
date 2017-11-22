@@ -1,0 +1,7 @@
+<div class="collection">
+  <a *ngFor="let patient of patients" class="collection-item avatar" [routerLink]="['/patient', patient._id]" routerLinkActive="active">
+    <i class="material-icons circle">person</i>
+    <span class="title">{{ patient.firstName }} {{ patient.lastName }}</span>
+    <p>First Line</p>
+  </a>
+</div>

@@ -1,0 +1,17 @@
+<image-upload [url]="'http://localhost:8000/image'" [max]="1" (uploadFinished)="onUploadFinished($event)" (removed)="onRemoved($event)"></image-upload>
+
+<a *ngIf="processButton" class="waves-effect waves-light btn" (click)="processImage()">Process Image</a>
+
+<a class="waves-effect waves-light btn blue" (click)="blueLight()">Blue Light</a>
+
+<a *ngIf="stopTherapyButton" class="waves-effect waves-light btn red" (click)="stopTherapy()">Stop Therapy</a>
+
+<ul class="collection">
+    <li *ngFor="let trial of trials" class="collection-item">
+        <p>Trial Number: {{ trial.trialNumber }}
+            <br> Red Value: {{ trial.redValue }}
+            <br> Red Reduced: {{ trial.redReduced }}
+            <br> Wavelength Used: {{ trial.wavelength }}
+        </p>
+    </li>
+</ul>

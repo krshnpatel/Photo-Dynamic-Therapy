@@ -4,17 +4,44 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { WebCamModule } from 'ack-angular-webcam';
+import { WebcamComponent } from './webcam/webcam.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
+import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+
+import { ImageUploadModule } from "angular2-image-upload";
+import { MaterializeModule } from "angular2-materialize";
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+
+import 'materialize-css';
+
+const appRoutes: Routes = [
+  { path: 'patient/:_id', component: PatientDetailComponent },
+  { path: 'patients', component: PatientListComponent },
+  {
+    path: '',
+    redirectTo: '/patients',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WebcamComponent,
+    PatientListComponent,
+    PatientDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    WebCamModule
+    ImageUploadModule.forRoot(),
+    MaterializeModule,
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
