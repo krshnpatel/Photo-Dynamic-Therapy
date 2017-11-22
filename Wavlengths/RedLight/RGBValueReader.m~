@@ -1,0 +1,19 @@
+image = imread('IMG_2898.png');
+Rvalues = image(:,:,3);
+%find the elements with the largest R-values, put it in the fullRed array
+indexOfRed = 1;
+
+for i = 1:size(image,1)
+    for j = 1:size(image,2)
+        if Rvalues(i,j) > 245
+            fullRed(indexOfRed) = {[i j]};
+            indexOfRed = indexOfRed + 1;
+        end
+    end
+end
+
+%of all those elements, find the average G-value
+
+indexOfG = 0;
+GvaluesTotal = 0;
+
